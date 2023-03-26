@@ -17,6 +17,9 @@ app.get("/", (req, res) => {
 app.get("/create", pollController.createPollGetController);
 app.post("/create", pollController.createPollPostController);
 app.get("/polls", pollController.getAllPolls)
+app.get('/polls/:id', pollController.viewPollGetController)
+app.post('/polls/:id', pollController.viewPollPostController)
+app.get('/polls', pollController.getAllPolls)
 mongoose
   .connect("mongodb://127.0.0.1:27017/poll-master", { useNewUrlParser: true })
   .then(() => {
