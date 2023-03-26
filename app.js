@@ -3,14 +3,18 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 
 const app = express();
+
+app.set('view engine', 'ejs')
+
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("", (req, res) => {
-  res.json({
-    message: "PROJECT INITIALIZATION",
-  });
+app.get("/", (req, res) => {
+  res.render('home')
+});
+app.get("/create", (req, res) => {
+  res.render('create')
 });
 
 mongoose
